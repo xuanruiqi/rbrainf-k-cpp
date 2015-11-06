@@ -40,7 +40,6 @@ CppBrainfuck::CppBrainfuck(std::vector<char> &prog, int size, bool verb = 0)
 	verbose = verb;
 }
 
-// constructor
 CppBrainfuck::~CppBrainfuck()
 {
 	delete [] data;

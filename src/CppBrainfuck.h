@@ -58,9 +58,9 @@ class CppBrainfuck
 {
 
 public:
-	CppBrainfuck(std::vector<char> &prog, int size, bool verb);
-	~CppBrainfuck();
-	void interpret(); // interpret a program from an istream
+	CppBrainfuck(std::vector<char> &prog, int size, bool verb); // constructor
+	~CppBrainfuck(); // destructor
+	void interpret(); // interpret a program
 
 private:
 	
@@ -72,7 +72,7 @@ private:
 	int line; // current line number
 	int col; // current column number
 	bool verbose; // if engine is in verbose mode
-	void execute_command();
+	void execute_command(); // executes current command (*command)
 
 
 };

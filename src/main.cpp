@@ -90,7 +90,7 @@ int main(int argc, char* argv[])
 
 	if(vm.count("verbose")) verbose = 1;
 
-	if(in_file == "") std::cout << "RBrainf**k by xuanruiqi" << std::endl;
+	if(in_file == "") std::cout << "RBrainf**k 0.0 Alpha" << std::endl;
 
 	if(verbose) std::cout << "Maximum data size: " << data_size << std::endl;
 
