@@ -31,7 +31,7 @@ std::vector<char> read_program(std::string filename)
 	std::ifstream file(filename, std::ios::binary);
 	std::vector<char> read_prog;
 	char c;
-	while(file.get(c))
+	while (file.get(c))
 		read_prog.push_back(c);
 	file.close();
 	return read_prog;
@@ -41,7 +41,7 @@ std::vector<char> read_program_cin()
 {
 	std::vector<char> read_prog;
 	char c;
-	while(std::cin.get(c))
+	while (std::cin.get(c))
 		read_prog.push_back(c);
 	return read_prog;
 }
@@ -74,13 +74,13 @@ int main(int argc, char* argv[])
 			.positional(p).run(), vm);
 	options::notify(vm);
 
-	if(vm.count("help"))
+	if (vm.count("help"))
 	{
 		std::cout << desc << std::endl;
 		return 0;
 	}
 
-	if(vm.count("version"))
+	if (vm.count("version"))
 	{
 		std::cout << "RBrainf**k, an interpreter for Brainfuck, " << 
 			"written in C++11" << std::endl;
@@ -88,24 +88,22 @@ int main(int argc, char* argv[])
 		return 0;
 	}
 
-	if(vm.count("verbose")) verbose = 1;
+	if (vm.count("verbose")) verbose = 1;
 
-	if(in_file == "") std::cout << "RBrainf**k 0.0 Alpha" << std::endl;
+	if (in_file == "") std::cout << "RBrainf**k 0.0 Alpha" << std::endl;
 
-	if(verbose) std::cout << "Maximum data size: " << data_size << std::endl;
+	if (verbose) std::cout << "Maximum data size: " << data_size << std::endl;
 
 	std::vector<char> program;
-	if(in_file != "") program = read_program(in_file);
+	if (in_file != "") program = read_program(in_file);
 	else program = read_program_cin();
 
-	if(verbose && in_file != "")
-	{
+	if (verbose && in_file != "")
 		std::cout << "Interpreting: " << in_file << std::endl;
-	}
 
 	CppBrainfuck interpreter(program, data_size, verbose);
 	interpreter.interpret();
 
-	if(verbose) std::cout << "Program terminated with exit status 0" << std::endl;
+	if (verbose) std::cout << "Program terminated with exit status 0" << std::endl;
 	return 0;
 }

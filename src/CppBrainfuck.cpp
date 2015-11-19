@@ -26,7 +26,7 @@ CppBrainfuck::CppBrainfuck(std::vector<char> &prog, int size, bool verb = 0)
 	data_size = size;
 
 	data = new byte[data_size];
-	for(int i = 0; i < data_size; ++i) 
+	for (int i = 0; i < data_size; ++i) 
 		data[i] = 0;
 
 	data_ptr = data;
@@ -49,28 +49,27 @@ CppBrainfuck::~CppBrainfuck()
 
 void CppBrainfuck::interpret()
 {
-	while(command < program.end()) execute_command();
+	while (command < program.end())
+		execute_command();
 }
 
 void CppBrainfuck::execute_command()
 {
 	col++;
-	switch(*command)
+	switch (*command)
 	{
 		case '>' :
 			try
 			{
-				if(data_ptr - data >= data_size) 
+				if (data_ptr - data >= data_size) 
 					throw DataPointerOutOfBoundsException(line, col);
 			}
-			catch(DataPointerOutOfBoundsException &e)
+			catch (DataPointerOutOfBoundsException &e)
 			{
 				std::cerr << e.what() << std::endl;
-				if(verbose)
-				{
+				if (verbose)
 					std::cerr << "Program terminated with exit status 1: error"
 						<< std::endl;
-				}
 				exit(1);
 			}
 			data_ptr++;
@@ -78,17 +77,15 @@ void CppBrainfuck::execute_command()
 		case '<' :
 			try
 			{
-				if(data_ptr - data <= 0) 
+				if (data_ptr - data <= 0) 
 					throw DataPointerOutOfBoundsException(line, col);
 			}
-			catch(DataPointerOutOfBoundsException &e)
+			catch (DataPointerOutOfBoundsException &e)
 			{
 				std::cerr << e.what() << std::endl;
-				if(verbose)
-				{
+				if (verbose)
 					std::cerr << "Program terminated with exit status 1: error"
 						<< std::endl;
-				}
 				exit(1);
 			}
 			data_ptr--;
